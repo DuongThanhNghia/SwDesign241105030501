@@ -50,4 +50,4 @@ Kiến trúc phù hợp cho Payroll System là kiến trúc đa tầng (N-Tier) 
 - Data Layer: Đảm bảo việc lưu trữ dữ liệu an toàn và hiệu quả, đặc biệt sau khi tịch hợp với hệ thống cũ
 - Security Layer: Cung cấp các cơ chế bảo mật dữ liệu, bảo vệ hệ thống khỏi truy cập trái phép
 ##### Biểu đồ Package mô tả kiến trúc
-
+![Package](https://www.planttext.com/api/plantuml/png/T95DJiCm44RtFiMe-svw0DG_X2gng5HOHLuCpgYCYErgFAaKK4_6WYDnXIPj874HIp-FtlTv_FtvDK-AehMlp07T6-u99bkXH45HEGPun8Pa0Xy6eBZtXoesHF3mlB4TM9IU0oSLr2XNUZA3Q4ToP4UPOukDR-NzrSNon9uSIZbcFr5ZjehUSqfjgrywJbkZOXQrNivW4vJsSdcAxUCbLXLqmo-OwBQmguMroJIBMb_Rnkm6IuUYy7jFMaNnTsaMfjCxAB8bM7DpliuCrVyPo8jPCwTGTdzs1W00__y30000)
