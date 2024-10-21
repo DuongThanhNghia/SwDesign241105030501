@@ -49,3 +49,5 @@ Kiến trúc phù hợp cho Payroll System là kiến trúc đa tầng (N-Tier) 
 - Service Layer: Đảm bảo tách biệt logic nghiệp vụ khỏi tầng giao diện, giúp hệ thống dễ bảo trì và nâng cấp
 - Data Layer: Đảm bảo việc lưu trữ dữ liệu an toàn và hiệu quả, đặc biệt sau khi tịch hợp với hệ thống cũ
 - Security Layer: Cung cấp các cơ chế bảo mật dữ liệu, bảo vệ hệ thống khỏi truy cập trái phép
+##### Biểu đồ Package mô tả kiến trúc
+
