@@ -120,4 +120,89 @@
 
        - layThongTinDuAn(maDuAn: String): truy xuất thông tin về mã dự án từ cơ sở dữ liệu DB2 mà không thay đổi dữ liệu
 #### 3.2 Biểu đồ Sequence cho ca sử dụng Select Payment
- ![Diagram](https://www.planttext.com/api/plantuml/png/X9D1ReCm54JtFiLNzhq04bMgfAgoQ5e5vG2_vZUnQcpBDaIShOiUgLTe425W6zGbrhoPOGo_tpzhvz7wkf8CkTSMLi-LaRebMW4weDi3CrUHuCAWygC4Zhj0TTo5kdTiArA-8Di8tXkQu6ZUza16Et4jqmRktJ5ZUGxt-88aSU_WbWElvC-wX3ndR83WuN5IBuCtG-gkxtcX5HJS4YasAgTS5vp1WRmLrD0OFzXioQEGZatrAVz2FaNxnX4PLRu6rrR5o4BN3BR26OajR6fhE_qI5o_JZm5xkYorwvF26ypWQ4hqoHk5gdID0fj_LeY9sHmG2hReyGCTfIl6LP_ubz8NIUKfyUdTazhHHXkjFeMjOdXpHdMYy4fcxwIeEIVd1X_ilZt6rgJAxWVy0m00__y30000)
+ ![Sequence](https://www.planttext.com/api/plantuml/png/X9D1ReCm54JtFiLNzhq04bMgfAgoQ5e5vG2_vZUnQcpBDaIShOiUgLTe425W6zGbrhoPOGo_tpzhvz7wkf8CkTSMLi-LaRebMW4weDi3CrUHuCAWygC4Zhj0TTo5kdTiArA-8Di8tXkQu6ZUza16Et4jqmRktJ5ZUGxt-88aSU_WbWElvC-wX3ndR83WuN5IBuCtG-gkxtcX5HJS4YasAgTS5vp1WRmLrD0OFzXioQEGZatrAVz2FaNxnX4PLRu6rrR5o4BN3BR26OajR6fhE_qI5o_JZm5xkYorwvF26ypWQ4hqoHk5gdID0fj_LeY9sHmG2hReyGCTfIl6LP_ubz8NIUKfyUdTazhHHXkjFeMjOdXpHdMYy4fcxwIeEIVd1X_ilZt6rgJAxWVy0m00__y30000)
+
+ #### 3.3 Nhiệm vụ của các lớp phân tích
+  - Lớp NhanVien (Employee): Lớp này lưu trữ và quản lý thông tin cá nhân của nhân viên, bao gồm loại nhân viên và phương thức thanh toán
+  - Lớp ThanhToan (Payment): Quản lý quá trình thanh toán, bao gồm việc tính toán lương và thực hiện thanh toán cho nhân viên dựa trên thông tin từ các lớp khác như TheChamCong và DonHang
+  - Lớp QuanLyThanhToan (PaymentManager): Điều phối toàn bố quá trình tính lương và thanh toán cho tất cả các nhân viên
+  - Lớp TheChamCong (Timecard): Lưu trữ và quản lý dữ liệu chấm công của nhân viên, bao gồm ngày làm việc và số giờ làm việc
+  - Lớp DonHang (SalesOrder): Được dùng cho nhân viên nhận hoa hồng để lưu thông tin về các đơn hàng và tính toán hoa hồng dựa trên doanh số
+  - Lớp DuLieuThanhToan (PaymentData): Đảm bảo lưu trữ và truy xuất thông tin thanh toán từ cơ sở dữ liệu
+  - Lớp DuLieuNhanVien (EmployeeData): Quản lý và cung cấp thông tin về nhân viên từ cơ sở dữ liệu
+  - Lớp TichHopCSDLDB2 (DB2Integration): Tích hợp hệ thống với cơ sở dữ liệu DB2 hiện tại để truy xuất mã dự án, đảm bảo rằng không có sự thay đổi dữ liệu DB2.
+
+#### 3.4 Biểu đồ lớp (Class Diagram) mô tả các lớp phân tích
+![ClassDiagram](https://www.planttext.com/api/plantuml/png/Z5913i8W4Bpp2eusqG_qO3peKMFKU2TqKaaeaBBLDCQNUV19Vi6qOXLCZ9nWM6PdPhbVRpDFegQcqanguJrVL4xR5k1dnlkrfLgPabTYTH1chs1Yd62IYxLeAnXQWWwsuExp52eyD2H5TIE3qtENnmGPkx0WBU1Rr4Sbtm8RLmX2p8RW8X_yZFaV7Lx56pZh5Tcw7RgKI0I_0yb35bb2_4FVz-E_zCNHfXFgqLth4ED2IjiOceE4qhuZ6sOycKmJoKd6NS5tA7dm5CnaZCrWYkuFFG000F__0m00)
+
+### 4. Phân tích ca sử dụng Maintain Timecard
+#### 4.1 Xác định các lớp phân tích cho ca sử dụng Maintain Timecard
+##### Các lớp phân tích chính
+  Employee (Nhân viên): Đại diện cho mỗi nhân viên trong hệ thống, chịu trách nhiệm quản lý và cung cấp thông tin về cá nhân và thông tin liên quan đến thẻ công
+
+  **Thuộc tính**:
+
+    - maNhanVien: Mã nhân viên
+    - tenNhanVien: Tên nhân viên
+    - loaiNhanVien: Loại nhân viên
+    - timeCard: Danh sách các thẻ chấm công
+
+  **Phương thức**
+
+    - addTimecard(): Thêm mới thẻ chấm công
+    - editTimecard(): Chỉnh sửa thẻ chấm công đã nhập
+
+  Timecard (Thẻ chấm công): Lớp này lưu trữ thông tin thời gian làm việc của nhân viên. Mỗi thẻ chấm công có các thuộc tính về ngày, số giờ làm việc và mã dự án
+
+  **Thuộc tính**:
+
+    - ngay: Ngày làm việc
+    - soGioLamViec: Số giờ làm việc
+    - maDuAn: Mã dự án mà nhân viên đã làm việc
+
+  **Phương thức**
+
+    - save(): Lưu thông tin thẻ chấm công vào cơ sở dữ liệu
+    - validate(): Xác minh thông tin hợp lệ
+
+  TimecardService (Dịch vụ quản lý thẻ chấm công): Lớp dịch vụ chịu các nghiệp vụ như thêm, chỉnh sửa và lưu thẻ chấm công vào hệ thống
+  
+  **Phương thức**
+
+    - save(timecard): Lưu trữ thẻ chấm công mới
+    - update(timecard): Cập nhật thông tin thẻ chấm công
+    - findByEmployee(maNhanVien): Lấy danh sách thẻ chấm công của nhân viên
+#### 4.2 Biểu đồ Sequence cho ca sử dụng Maintain Timecard
+![Sequence Maintain](https://www.planttext.com/api/plantuml/png/Z95D3e8m48NtFKMNcE05N1YC6FVY1SPsD9FGdxG5mzbSU2IlO34YX3JgTbw_zsPU7xTxuGEuqAYQWGZ6yPsojUaG6RDnJe8iwC2Ff520anMwbWGcjGDQuobwT4cPiS6QBzTpGxxYmY447EQPla2NSs_sP7Ake6msUi7crCGeEcYyyl_uz0Ojr2JZ3jdNeF7CY7XeCGjlPSGcRo9PGe0J-3w2j4SNVXA9Tem-arDLdvTSxrFkQgna-wfKiWArx7_u2G00__y30000)
+
+#### 4.3 Nhiệm vụ của từng lớp phân tích
+
+- Employee: Nhập và gửi yêu cầu tạo, chỉnh sửa thông tin chấm công
+- Timecard: Đại dienj cho từng thẻ chấm công, lưu trữ thông tin về ngày làm viêc, số giờ và mã dự án. Nó cũng chịu trách nhiệm xác minh tính hợp lệ của thông tin
+- TimecardService: Xử lý nghiệp vụ liên quan đến việc tạo mới hoặc chỉnh sửa thẻ chấm công và liên lạc với cơ sở dữ liệu thông qua TimecardRepository.
+- TimecardRepository: Tương tác với cơ sở dữ liệu, chịu trách nhiệm lưu trữ hoặc truy xuất thẻ chấm công
+
+#### 4.4 Biểu đồ Class Diagram cho ca sử dụng Maintain Timecard
+![Class Maintain](https://www.planttext.com/api/plantuml/png/X9B1JiCm38RlUOgefuAw0zSAJGCDSPbss11tAp73KfjMYLkfGZmP1nw9Lw3jaXIw8dAA_Jlsbp_v-lZSE0RBJLa8LO1pyg6iYwf3b6z2Zkl8bin9bh1_1VDCQ7xd6SrCs97ZsoSgKO7LQyb-vxmCMWSnPPNB45nv7JNn7mNlmaE6L8JS0gCq9-XyJ8Qbgnwfsa7PewdvNRRDNS1jeI3T7qy3W8Ds22w67T6sf2PZbCN-M4H5RrmUBSn6edo4oyuu-K2MUO3SyuJ1JQr_DlpdxWUiAqTSsIuIZUHBdfuxBqelPFHz5v3JwPadkdvq_1N9JI9NgxLChfFOIimT6WekCHVBGcCXDcZqy0s_0G00__y30000)
+
+### 5. Hợp nhất kết quả phân tích
+#### 5.1 Tóm tắt các lớp chính
+##### Các lớp phân tích được xác định qua hai ca sử dụng: 
+
+  Emloyee: Quản lý thông tin của nhân viên, bao gồm mã nhân viên, ten, phương thức thanh toán, loại nhân viên và các thông tin liên quan.
+  Timecard: Đại diện cho thông tin về số giờ làm việc của nhân viên, được sử dụng để tính toán lương
+  Payment: Xử lý việc thanh toán cho nhân viên dựa trên loại nhân viên và thông tin được ghi nhận từ thẻ chấm công hoặc hoa hồng
+  TiemcardService: Quản lý trình tạo, cập nhật và lưu trữ thẻ chấm công cho nhân viên
+  PaymentService: Chịu trách nhiệm thực hiện các thao tác liên quan đến tính toán và thực hiện thanh toán cho nhân viên
+  PurchaseOrder: Đại diện cho các đơn hàng được thực hiện bởi nhân viên nhận hoa hồng, được sử dụng để tính toán hoa hồng
+  
+  #### 5.2 Mối quan hệ giữa các lớp
+  ###### Qua hai ca sử dụng, Chúng ta thấy rằng các lớp có mối quan hệ qua lại với nhau để hoàn thành các nhiệm vụ trong hệ thống:
+  - Employee tương tác với các đối tượng khác nhau (Timecard, PurchaseOrder, Payment) để ghi nhận công việc và các giao dịch của họ.
+  - PaymentService đóng vai trò trung tâm trong việc xử lý thanh toán, lấy dữ liệu từ TimecardService và PurchaseOrder để tính toán và thực hiện thanh toán cho nhân viên
+  - Các Repositry đóng vai trò lưu trữ và cung cấp dữ liệu cho quá trình xử lý, đảm bảo rằng mọi thông tin đều được cập nhật và truy xuất khi cần thiết
+
+#### 5.3 Biều đồ lớp hợp nhất
+![ClassDiagram](https://www.planttext.com/api/plantuml/png/b5GxJiCm6Dvp2gjJAn6nPq150j6XF4GZTYinYQN4ZXox8a8SXe6n4WDJEp0WSO-SW2lWaDX9R4SLtUB__nx_gp-7psN98UCYppmloc1PWikyo6Y547ZsWFpvERn98Nd0Y0HWmnacIVlE4N47YbHGaeIfY48PJqCAZOICGcn1NvH-Y7CKGHOhVPB0AW0NaAFskwHNcAvXBj5H033XokQ5E7VGtS4gHuGFsGQsXhJXdvr7wQwb15oMi9AFEd--2C2MudZ0BbYKmXBTiXYneSQrW2j8aca5q-06iIsELDS1nwtakkdbdEXkgUae9nD6fm5MdmtXJ0WLSR2SI6DjCD048okPREyqVD6ZUYCgU8yAMc9EMQMzDBDgTWdhLPlRwxZe-UtgtAJAePDCExJwCLsxEKs7hEJfQkd7LBJPWO9PhRGGJiSTkd6XhzVt-qiAm2of3pkiXpSRvQaJaMaahVSx0ZfVHjfersKoh_Ul51JTCw3D-nZY6At4PT_lGkxirmT9cZsVUSO9-FxP198pKO4dKU_V-342Un1AMHVdG9b7qM2aMZNed9aoXDbgftAAHy3_AzLR8X8tVzU_0000__y30000)
+
+#### 5.4 Hợp nhất luồng hoạt động
