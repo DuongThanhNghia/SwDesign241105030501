@@ -33,5 +33,70 @@
 #### 2.4 Cơ chế quản lý thông tin nhân viên
 - Payroll Administrator có quyền thêm, xóa, sửa thông tin nhân viên
   ### 3. Phân tích ca sử dụng Payment
-#### 3.1 
+#### 3.1 Xác định các lớp phân tích cho ca sử dụng Payment
+  Lớp NhanaViene (Employee): Lớp này đại diện cho mối nhân viên trong hệ thống và bao gồm câc thông tin cơ bản
+  
+**Thuộc tính**:
+
+    - maNhanVien: Mã nhân viên
+    - tenNhanVien: Tên nhân viên
+    - phuongThucThanhToan: Phương thức thanh toán (chuyển khoản, bưu điện)
+    - loaiNhanVien: Loại nhân viên
+    - ngayTraLuongCuoi: Ngày nhận lương lần cuối
+    - ngayGiaNhap: Ngày gia nhập công ty
+
+**Phương Thức**:
+
+    - layLoaiNhanVien(): Trả về loại nhân viên.
+    - capNhatThongTin(): Cập nhật thông tin cá nhân và phương thức thanh toán
+
+  Lớp ThanhToan (Payment): Lớp này đại diện cho mỗi khoản thanh toán thực hiện cho nhân viên
+  
+**Thuộc Tính**:
+
+    - ngayThanhToan: Ngày thực hiện thanh toán
+    - soTien: Số tiền thanh toán
+    - phuongThucThanhToan: Phương thức thanh toán
+
+**Phương thức**:
+
+    - thucHienThanhToan(nhanVien: Employee): Thực hiện thanh toán cho nhân viên
+    - tinhToanLuong(nhanVien: Employee): Tính toán số tiền lương dựa trên thông tin nhân viên và các thẻ chấm công
+
+  Lớp QuanLyThanhToan(PaymentManager): Đây là lớp quản lý việc tính toán và xử lý thanh toán lương cho nhân viên
+
+  **Thuộc tính**:
+  
+      - danhSachNhanVien: Danh sách các nhân viên cần được thanh toán
+
+  **Phương thức**
+
+      - tinhToanLuongHangTuan(): Tính toán lương cho nhân viên làm theo giờ, dựa trên thẻ chấm công
+      - tinhToanLuongHangThang(): Tính toán lương cho nhân viên cố định và có hoa hồng dựa trên thẻ chấm công và đơn hàng
+      - thucHienTatCaThanhToan(): Thực hiện thanh toán cho tất cả nhân viên vào các ngày lương
+
+  Lớp TheChamCong (TimeCard): Lớp này đại deịn cho thông tin về số giờ làm việc mà nhân viên đã nhập vào hệ thống
+
+  **Thuộc tính**:
+
+       - ngayLamViec: Ngày làm việc
+       - soGioLam: Số giờ làm việc của nhân viên trong ngày
+       - maDuAn: Mã dự án mà nhân viên đã làm
+
+  **Phương thức:
+
+       - layThongTinGioLam: Trả về số giờ làm việc của nhân viên trong một khoảng thời gian
+       - layMaDuAn: Trả về mã dự án liên quan đến thẻ chấm công
+
+  Lớp DonHang: Lớp này cho nhân viên có hoa hồng. Nó lưu trữ thông tin về các đơn hàng
+  
+  **Thuộc tính**:
+
+       - ngayDatHang: Ngày mà đơn hàng được thực hiện 
+       - soTienDonHang: Tổng giá trị của đơn hàng
+       - hoaHong: Tỷ lệ hoa hồng mà nhân viên được nhận
+
+  **Phương thức**:
+
+       - layThongTinDonHang(): Trả về thông tin của đơn hàng
 #### 3.2 
