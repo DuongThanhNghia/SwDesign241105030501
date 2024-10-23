@@ -88,7 +88,7 @@
        - layThongTinGioLam: Trả về số giờ làm việc của nhân viên trong một khoảng thời gian
        - layMaDuAn: Trả về mã dự án liên quan đến thẻ chấm công
 
-  Lớp DonHang: Lớp này cho nhân viên có hoa hồng. Nó lưu trữ thông tin về các đơn hàng
+  Lớp DonHang (SalesOrder): Lớp này cho nhân viên có hoa hồng. Nó lưu trữ thông tin về các đơn hàng
   
   **Thuộc tính**:
 
@@ -99,4 +99,25 @@
   **Phương thức**:
 
        - layThongTinDonHang(): Trả về thông tin của đơn hàng
-#### 3.2 
+
+  Lớp DuLieuThanhToan (PaymentData): Lớp này chịu trách nhiệm lưu trữ và truy xuất thông tin thanh toán từ cơ sở dữ liệu
+
+  **Phương thức**:
+
+       - luuThongTinThanhToan(payment: Payment): Lưu thông tin về một lần thanh toán đã được thực hiện
+       - luuThongTinThanhToan(maNhanVien: String): Truy xuất thông tin thanh toán của một nhân viên cụ thể
+
+  Lớp DuLieuNhanVien (EmployeeData): Lớp này quản lý việc lưu trữ và truy xuất thông tin nhân viên từ cơ sở dữ liệu
+
+  **Phương thức**: 
+
+       - layThongTinNhanVien(maNhanVien: String): Truy xuất thông tin cá nhân và phương thức thanh toán của nhân viên
+       - capNhatThongTinNhanVien(employee: Employee): Cập nhật thông tin nhân viên trong cơ sở dữ liệu
+
+   Lớp TichHopCSDLDB2 (DB2Integration): Lớp này chịu trách nhiệm tích hợp hệ thống mới với cơ sở dữ liệu DB2 (hệ thống dự án)
+
+   **Phương thức**
+
+       - layThongTinDuAn(maDuAn: String): truy xuất thông tin về mã dự án từ cơ sở dữ liệu DB2 mà không thay đổi dữ liệu
+#### 3.2 Biểu đồ Sequence cho ca sử dụng Select Payment
+ ![Diagram](https://www.planttext.com/api/plantuml/png/X9D1ReCm54JtFiLNzhq04bMgfAgoQ5e5vG2_vZUnQcpBDaIShOiUgLTe425W6zGbrhoPOGo_tpzhvz7wkf8CkTSMLi-LaRebMW4weDi3CrUHuCAWygC4Zhj0TTo5kdTiArA-8Di8tXkQu6ZUza16Et4jqmRktJ5ZUGxt-88aSU_WbWElvC-wX3ndR83WuN5IBuCtG-gkxtcX5HJS4YasAgTS5vp1WRmLrD0OFzXioQEGZatrAVz2FaNxnX4PLRu6rrR5o4BN3BR26OajR6fhE_qI5o_JZm5xkYorwvF26ypWQ4hqoHk5gdID0fj_LeY9sHmG2hReyGCTfIl6LP_ubz8NIUKfyUdTazhHHXkjFeMjOdXpHdMYy4fcxwIeEIVd1X_ilZt6rgJAxWVy0m00__y30000)
