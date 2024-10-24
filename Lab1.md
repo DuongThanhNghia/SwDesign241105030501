@@ -4,12 +4,11 @@
 
 #### 1.1 Đề xuất kiến trúc
 
-- **Kiến trúc đa tầng (N-tier) kết hợp với kiến trúc hướng dịch vụ (SOA)**
+- **Kiến trúc đa tầng (N-tier)**
 
 #### 1.2 Lý do lựa chọn
 
 - **Kiến trúc đa tầng (N-tier)** giúp hệ thống được phân tách thành các tầng khác nhau như Presentation Layer, Service Layer, Data Layer và Security Layer. Điều này giúp hệ thống dễ bảo trì và quản lý
-- **Kiến trúc hướng dịch vụ (SOA)** Bằng cách chia nhỏ các chức năng thành các dịch vụ độc lập, các module có thể dễ dàng mở rộng hoặc thay đổi mà không ảnh hưởng đến toàn bộ hệ thống.
 
 #### 1.3 Ý nghĩa thành phần trong kiến trúc
 
