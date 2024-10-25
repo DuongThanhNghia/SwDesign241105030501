@@ -224,7 +224,7 @@
    - Nhân viên có thể sử dụng hệ thống để truy vấn số giờ làm việc, tổng thu nhập năm hoặc các giờ làm cho từng dự án
    - Hệ thống dữ liệu TimecardRepository và PaymentRepository để hiện thị các báo cáo
 #### 5.5 Tài liệu mô tả
-Qua quá trình và hợp nhất, hệ thống quản lý payroll của Acme Inc. sẽ bao gồm các chứ năng
+Qua quá trình và hợp nhất, hệ thống quản lý payroll của Acme Inc. sẽ bao gồm các chứ năng:
  - Ghi nhận thời gian làm việc (Maintain Timecard): Ghi lại số giờ làm việc hàng ngày để lưu trữ trong hệ thống và tính toán lương
  - Xử lý thanh toán (Payment): Tự động tính toán và thực hiện than toán dựa trên thông tin từ thẻ chấm công và dữ liệu nhân viên, bao gồm thanh toán theo giờ, lương cố định và hoa hồng
  - Chọn phương thức thanh toán: Nhân viên chọn cách nhận lương và hệ thống thực hiện thanh toán theo phương thức đã chọn vào thời điểm quy định
