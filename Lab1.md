@@ -206,3 +206,27 @@
 
 #### 5.4 Hợp nhất luồng hoạt động
 ##### Khi hợp nhất hai ca sử dụng Select Payment và Maintain Timecard, hệ thống sẽ hoạt động theo luồng sau:
+ - Nhân viên ghi nhân thời gian làm việc:
+   - Nhân viên sửu dụng hệ thống để nhập thẻ chấm công (Timecard), bao gồm thông tin ngày làm việc, số giờ làm việc và mã dự án (charge number) để ghi nhận các giờ làm việc thực tế.
+   - Hệ thống thông qua dịch vụ chấm công (TimecardService) để lưu thẻ chấm công vào kho thẻ chấm công (TimecardRepository). Mỗi thẻ chấm công được liên kết với mã nhân viên và lưu trữ để phục vụ tính toán lương.
+ - Lưu thông tin thẻ chấm công:
+   - Hệ thống gửi yêu cầu tới TimecardRepository để lưu thẻ chấm công vào cơ sở dữ liệu, đảm bảo dữ liệu được lưu trữ cho tính toán lương cũng như các báo cáo sau này.
+ - Tính toán và xử lý thanh toán (Payment):
+   - Vào ngày thanh toán được chỉ định, dịch vụ thanh toán (PaymentService) sẽ truy vấn thông tin từ các thẻ chấm công đã lưu vào thông tin nhân viên để thực hiện thanh toán cho từng nhân viên.
+   - Đối với nhân viên làm theo giờ. hệ thống sẽ tính toán số giờ làm việc trong tuần hoặc tháng, bao gồm giờ làm thêm và mức lương tương ứng
+   - Đối với nhân viên hưởng lương cố định, dịch vụ thanh toán sẽ tự động tính toán dựa trên mức lương cố định, tuy nhiên vẫn sử dụng thẻ chấm công để theo dõi các dự án làm việc và giờ làm việc thực tế.
+ - Ghi nhận thông tin thanh toán:
+   - Sau khi tính toán lương, PaymentService lưu trũ thông tin thanh toán vào PaymentRepository, bao gồm ngày thanh toán, số tiền và phương thức thanh toán đã chọn của nhân viên.
+ - Chọn phương thức thanh toán và thực hiện thanh toán:
+   - Nhân viên có thể lựa chọn các nhận lương trong hồ sơ cá nhân.
+   - Hệ thống thực hiện thanh toán theo phương thức nhân viên đẫ chọn, đảm bảo quy trình thanh toán tự động và không cần can thiệp thủ công.
+ - Truy vấn báo cáo cá nhân:
+   - Nhân viên có thể sử dụng hệ thống để truy vấn số giờ làm việc, tổng thu nhập năm hoặc các giờ làm cho từng dự án
+   - Hệ thống dữ liệu TimecardRepository và PaymentRepository để hiện thị các báo cáo
+#### 5.5 Tài liệu mô tả
+Qua quá trình và hợp nhất, hệ thống quản lý payroll của Acme Inc. sẽ bao gồm các chứ năng
+ - Ghi nhận thời gian làm việc (Maintain Timecard): Ghi lại số giờ làm việc hàng ngày để lưu trữ trong hệ thống và tính toán lương
+ - Xử lý thanh toán (Payment): Tự động tính toán và thực hiện than toán dựa trên thông tin từ thẻ chấm công và dữ liệu nhân viên, bao gồm thanh toán theo giờ, lương cố định và hoa hồng
+ - Chọn phương thức thanh toán: Nhân viên chọn cách nhận lương và hệ thống thực hiện thanh toán theo phương thức đã chọn vào thời điểm quy định
+ - Quản lý thông tin nhân viên: Quản trị viên thêm, sửa, xóa thông tin nhân viên và thay đổi phân loại thanh toán
+ - Báo cáo cá nhân: Nhân viên xem báo cáo tổng số giờ làm, tổng lương và các khoản thanh toán đã nhận.
