@@ -33,7 +33,7 @@
 - Payroll Administrator có quyền thêm, xóa, sửa thông tin nhân viên
   ### 3. Phân tích ca sử dụng Payment
 #### 3.1 Xác định các lớp phân tích cho ca sử dụng Payment
-  Lớp NhanaViene (Employee): Lớp này đại diện cho mối nhân viên trong hệ thống và bao gồm câc thông tin cơ bản
+  Lớp NhanVien (Employee): Lớp này đại diện cho mối nhân viên trong hệ thống và bao gồm câc thông tin cơ bản
   
 **Thuộc tính**:
 
