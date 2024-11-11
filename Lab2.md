@@ -3,6 +3,7 @@
 ### 1. Phân tích ca sử dụng Create Employee 
 ### 2. Phân tích ca sử dụng Maintain Puschase Order
 ### 3. Phân tích ca sử dụng Login
+#### 3.1 Xác định các lớp phân tích cho ca sử dụng
 ### 4. Phân tích ca sử dụng Create AdminiStrative Report
 #### 4.1 Xác định các lớp phân tích cho ca sử dụng
 ##### Các lớp phân tích chính
