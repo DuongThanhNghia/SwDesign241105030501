@@ -61,5 +61,15 @@
 
        - logError(message: String): Lưu và hiển thị thông báo lỗi
        - displayError(): Hiển thị thông báo lỗi cho Payroll Administrator
+#### 4.2 Biểu đồ Sequence cho ca sử dụng Create AdminiStrative Report
+![Sequence](https://www.planttext.com/api/plantuml/png/d99DJiCm48NtFeNLLIB11Rn00eJOLAZY1YOPt95SEvrCa7eCRa1LiU-2LRjW4THxz0HSWVm1QPeKYIpiU3BlpJSPVsxV9veO8qoqOpdH2_BMNiOpT9WoQVOasWdta7ZYMt0mzEqWT4FaQUoD0HAYproUNtGzbIIOPv1o7GyYGWP2hPh4w-OSYexmrqj9KmVXJmzjMLxbIo-ZSk5f_kAcnVkRCq8MJvq-GCaPkMAhkYwJJpUePAgV87X42tTw1cVI-aWpUXTMuX9al5jdnmo777r5LAk5Z-TyLIoxzNwxYgJjTGIRmdUn_UQLvSD-iyIUOgtvgOBNLETWL6rbE-XCymD6uO-y9He6ZZ5Dh5xKXhKMN2mgilOyEdWz8p_9sDo38yx_C9PyNm000F__0m00)
+#### 4.3 Nhiệm vụ của các lớp phân tích
+- PayrollAdministrator: Tác nhân chính yêu cầu tạo và lưu báo cáo
+- Report: Đại diện cho báo cáo hành chính, chịu trách nhiệm tạo và lưu nội dung báo cáo
+- ReportGenerator: Chịu trách nhiệm xử lý logic để tạo báo cáo theo tiêu chí.
+- ReportCriteria: Lưu trữ các tiêu chí để tạo báo cáo
+#### 4.4 Biểu đồ lớp (Class Diagram) mô tả các lớp phân tích
+![Diagram]()
+- ErrorLogger: Quản lý thông báo lỗi và hiển thị lỗi cho Payroll Administrator
 #### 5. Phân tích ca sử dụng Maintain Employee Infomation
 #### 6. Phân tích ca sử dụng Run Payroll
