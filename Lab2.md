@@ -13,10 +13,47 @@
     - loaiNhanVien: Loại nhân viên
     - phuongThucThanhToan: Phương thức thanh toán
     - ngayGiaNhap: Ngày gia nhập công ty
+    
 **Phương thức**
 
     - save(): Lưu thông tin  nhân viên vào cơ sở dữ liệu
     - validate(): Xác minh tính hợp lệ của thông tin nhân viên
+
+- EmployeeService
+
+  **Phương thức**
+
+      - createEmployee(employee: Employee): Xử lý việc tạo mới nhân viên
+      - validateEmployee(employeee: Employee): Kiểm tra tính hợp lệ của thông tin nhân viên trước khi lưu
+
+- EmployeeRepository:
+
+  **Phương thức**
+
+      - saveEmployee(employee: Employee): Lưu thông tin nhân viên vào cơ sở dữ liệu
+      - findEmployeeById(maNhanVien: String): Tìm kiếm thông tin nhân viên dựa trên mã nhân viên
+
+- Department
+
+  **Thuộc tính**
+
+      - maPhongBan: Mã phòng ban
+      - tenPhongBan: Tên phòng ban
+
+  **Phương thức**
+
+      - addEmployee(employee: Employee): Thêm nhân viên vào phòng ban
+
+  - Payroll
+ 
+  **Thuộc tính**
+
+      - maNhanVien: Mã nhân viên
+      - luongCoBan: Lương cơ bản của nhân viên
+
+  **Phương thức**
+
+      - calculateInitialSalary(employee: Employee): Tính lương ban đầu cho nhân viên
 #### 1.2 biểu đồ Sequence cho ca sử dụng Create Employee
 ![Sequence](https://www.planttext.com/api/plantuml/png/Z9BDJiCm3CVlUOeSLucz00Uq0uXnGQYhk5k9jrfoaoeVbV9i77WaNW5NexHCAz13L3ls_sSx_dXxtyK48UME5PZaWzxNIkrhlRtJ3rtFlY0UC0naKDzg4n0IJlvD1yyjk5T2TwCJkjbW3pHRVPkzEpLjDetusiQ3EDq9oYED0dsbBaaBk507OBB2tLGAE9rDZTEzt83IylqYKcFl8qbtHUGY37CBqq_rGs8HlxqwYE_gHZ6xXh_7NaRReKkI0jQkK1TXVz14Ovts0YLuvl6PW4rccTYJeqJ01s08vO8wXLz7VcLAVsFghBX25mtPcKMbvqsnEcPZCCPZPYuAEQ8cz-y7lAvAtkaZ44ijwApQoJ5kxoS0003__mC0)
 #### 1.3 Nhiệm vụ của các lớp phân tích
@@ -26,6 +63,7 @@
 - Department: Quản lý phòng ban, liên kết nhân viên mới với phòng ban tương ứng
 - Payroll: Lưu trữ thông tin phòng ban, tính  toán lương ban đầu cho nhân viên mới
 #### 1.4 Biểu đồ lớp (Class Diagram) cho các lớp phân tích
+![Diagram](https://www.planttext.com/api/plantuml/png/Z5D1Ri8m4Bpd5Jx2WG_uK25ALN6fK46zB_P2B6tio7OYMLLVraEVr2_K1foG4BNDATgPtPdTIRu_lvREW_LDHOKWS8uzLJMPWCZU2vQUdRTAdrW5BoNeDuLwKFQe9-jaG4q2TTaOVTgNZTX7kDmRkE9hyCZq2SApIbBrfTe2AHcHsPopbJ64cUwWFHTResJnKOpCxz2sIdGx28jnHWPdU7tX7NyyFSjcF9g3tzlkBBnYRPponeRi8bd-tSDvcJFtgBJCm2fivAo_Fx-USjwtzkfhh6EQ5Mf_bz-sZ8TVmLr-mpf8-G-FdTuMWZL4VtmiQzCS21cbw1zDfoM0H4Fnp1kjl0BQ0O4DqxAN4KbudF5YyJ1rTCuQXswIVNCapfJsQ47uQMhUZ_TcU-90EdTn5bUNX98TGf7RRuc3MV6ZI3kpex75ZQqHFuRYc3V54hLCV-eF0000__y30000)
 ### 2. Phân tích ca sử dụng Maintain Puschase Order
 ### 3. Phân tích ca sử dụng Login
 #### 3.1 Xác định các lớp phân tích cho ca sử dụng
