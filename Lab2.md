@@ -369,3 +369,104 @@
 - PayrollRepository: Tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin lương.
 #### 6.4 Biểu đồ lớp (Class Diagram) mô tả các lớp phân tích
 ![Diagram](https://www.planttext.com/api/plantuml/png/Z5HBZjim3Dtx55fcW9aB64KmJL9C5a5RD4QxPcLEB8mi6g8Kr2XwiYvwf5wXSY9PTX9CnniRv2CV7p_--_lF8pkmphUwa1gOnOUsqzGZYf-569wziyeSH0iV6p1V5PgPsQ6vQTS4wgQZQpoPGzLuMGLtKn54_mOS2dE0_aaDL5sqal-kKUWXQ4sh13wW-mnzYyPjq87IlBWhnTnI_2gYeagrk0PR9qKZqmxQK9yyMvLnWkb9KR1UAD_uzvbtIzxoDx8lM0-a8ImpxK4ZVx8rsYkkyB45SvYfOgf2UpPahZmDmPQIBP2kgMqLio8pS9v1cJO8jwJrVoOMKxkGT-V7v1Aqz3fK6PCiCCw_73VXNhZGGHawoANOANRlKaUNzu97oScPcx3CjPwuy0TA_nfJm1z9rLVAzcYFIeuhQRr9ELB4oNu4hUei9RGSRfEiY3I6NRha-O8TiN9a-qJ5S1phxSxlCg5dtEUD7CohFZ4jyWZAE9MxCJgJXwr-kL3eB1X-HXjw2LOXBqwTZP7BIPik6lJmi1nrJiIKmZFoBN2Qv9l0UR9lWgUrBFEIlOQRvUJmpkYPhiWewdZdKynuwX7J3CSwGqnED6BaU5jSJ4SnAIsPIj5PaiX3M1eH5uzewk7_-Gy00F__0m00)
+
+## II. Code Java mô phỏng ca sử dụng Maintain Timecard
+```Java
+package Maintain;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Timecard {
+    private String employeeId;
+    private String workDate;
+    private int hoursWorked;
+
+    public Timecard(String employeeId, String workDate, int hoursWorked) {
+        this.employeeId = employeeId;
+        this.workDate = workDate;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getWorkDate() {
+        return workDate;
+    }
+
+    public int getHoursWorked() {
+        return hoursWorked;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee ID: " + employeeId + ", Work Date: " + workDate + ", Hours Worked: " + hoursWorked;
+    }
+}
+
+class TimecardService {
+    private List<Timecard> timecards = new ArrayList<>();
+
+    public void addTimecard(Timecard timecard) {
+        timecards.add(timecard);
+        System.out.println("Timecard added successfully.");
+    }
+
+    public void displayTimecards() {
+        if (timecards.isEmpty()) {
+            System.out.println("No timecards found.");
+            return;
+        }
+
+        System.out.println("Timecards List:");
+        for (Timecard timecard : timecards) {
+            System.out.println(timecard);
+        }
+    }
+}
+
+public class Lab2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TimecardService timecardService = new TimecardService();
+
+        while (true) {
+            System.out.println("\n=== Maintain Timecard ===");
+            System.out.println("1. Add Timecard");
+            System.out.println("2. View Timecards");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Employee ID: ");
+                    String employeeId = scanner.next();
+                    System.out.print("Enter Work Date (YYYY-MM-DD): ");
+                    String workDate = scanner.next();
+                    System.out.print("Enter Hours Worked: ");
+                    int hoursWorked = scanner.nextInt();
+
+                    if (hoursWorked < 0 || hoursWorked > 24) {
+                        System.out.println("Invalid hours worked. Please enter a value between 0 and 24.");
+                    } else {
+                        Timecard timecard = new Timecard(employeeId, workDate, hoursWorked);
+                        timecardService.addTimecard(timecard);
+                    }
+                    break;
+                case 2:
+                    timecardService.displayTimecards();
+                    break;
+                case 3:
+                    System.out.println("Exiting the application.");
+                    scanner.close();
+                    return;
+                default:
+System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
