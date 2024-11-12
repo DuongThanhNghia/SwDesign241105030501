@@ -65,6 +65,57 @@
 #### 1.4 Biểu đồ lớp (Class Diagram) cho các lớp phân tích
 ![Diagram](https://www.planttext.com/api/plantuml/png/Z5D1Ri8m4Bpd5Jx2WG_uK25ALN6fK46zB_P2B6tio7OYMLLVraEVr2_K1foG4BNDATgPtPdTIRu_lvREW_LDHOKWS8uzLJMPWCZU2vQUdRTAdrW5BoNeDuLwKFQe9-jaG4q2TTaOVTgNZTX7kDmRkE9hyCZq2SApIbBrfTe2AHcHsPopbJ64cUwWFHTResJnKOpCxz2sIdGx28jnHWPdU7tX7NyyFSjcF9g3tzlkBBnYRPponeRi8bd-tSDvcJFtgBJCm2fivAo_Fx-USjwtzkfhh6EQ5Mf_bz-sZ8TVmLr-mpf8-G-FdTuMWZL4VtmiQzCS21cbw1zDfoM0H4Fnp1kjl0BQ0O4DqxAN4KbudF5YyJ1rTCuQXswIVNCapfJsQ47uQMhUZ_TcU-90EdTn5bUNX98TGf7RRuc3MV6ZI3kpex75ZQqHFuRYc3V54hLCV-eF0000__y30000)
 ### 2. Phân tích ca sử dụng Maintain Puschase Order
+#### 2.1 Xác định các lớp phân tích cho ca sử dụng
+##### Mục đích
+- Duy trì và cập nhật thông tin đơn hàng mua (Purchase Order) trong hệ thống
+- PurchaseOrder:
+
+  **Thuộc tính**
+
+      - maDonHang: Mã đơn hàng
+      - ngayDatHang: Ngày đặt hàng
+      - soTienDonHang: Tổng giá trị đơn hàng
+      - trangThaiDonHang: Trạng thái của đơn hàng
+
+  **Phương thức**
+
+      - validate(): Xác minh tính hợp lệ của thông tin đơn hàng
+      - updateOrderDetails(): Cập nhật chi tiết đơn hàng
+
+- PurchaseOrderService:
+ 
+  **Phương thức**
+
+      - maintainOrder(order: PurchaseOrder): Xử lý việc duy trì và cập nhật đơn hàng
+      - validateOrderData(order: PurchaseOrder): Kiểm tra tính hợp lệ của thông tin đơn hàng trước khi lưu
+
+- PurchaseOrderRepository:
+
+  **Phương thức**
+
+      - saveOrder(order: PurchaseOrder): Lưu thông tin đơn hàng vào cơ sở dữ liệu
+      - findOrderById(maDonHang: String): Tìm kiếm thông tin đơn hàng dựa trên mã đơn hàng
+      - updateOrder(order: PurchaseOrder): Cập nhật thông tin đơn hàng trong cơ sở dữ liệu
+
+- Supplier:
+
+  **Thuộc tính**
+
+      - maNhaCungCap: Mã nhà cung cấp
+      - tenNhaCungCap: Tên nhà cung cấp
+
+  **Phương thức**
+
+      - linkOrder(order: PurchaseOrder): Liên kết đơn hàng với nhà cung cấp
+#### 2.2 Biểu đồ Sequence cho ca sử dụng Maintain Puschase Order
+![Sequence](https://www.planttext.com/api/plantuml/png/b9DTJiCm3CVVSme_hj9s0HxGXFO0Jw1j7C1gt2qYTQfyJFHiF70aha2ITeLLPIkHaZPs_FlRaVFryRbs7gqFjHPOUcFXrP4L8gsmkeUNOCiZEdgsakoEx4cL17TGes8VPpOlQjmOVaG-B84Fs6xGTnjdzefuy7aRF_iZgjvIY4dwM7LBZN4gfjP6uKgnpDQ7zad-28zGlq9MVnTnOHO2jGUJVe7UbVDEG1opCeoi4sebqTEYo669bKqzCRemEsOpBweEJM9tbtrngfY6pgk_oxrZovlPxKBJQ9MBrOhVhYOpdBsfdb0tnICaz-CvwDnz9C65iYJdgg1rcoca7O7YVrx-f08nSdHMg3J9vG0TSCHIPBbUnf03DhvhdolTCnPBCPK9YHQdMCSrFSTl0000__y30000)
+#### 2.3 Nhiệm vụ của các lớp phân tích
+- PurchaseOrder: Lưu trữ và quản lý thông tin đơn hàng. Đảm bảo rằng thông tin được nhập vào là hợp lệ và có thể được cập nhật khi cần
+- PurchaseOrderService: Xử lý các nghiệp vụ liên quan đến duy trì và cập nhật đơn hàng, bao gồm xác minh dữ liệu và lưu thông tin đơn hàng vào cơ sở dữ liệu
+- PurchaseOrderRepository: Tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin đơn hàng. Đảm bảo rằng dữ liệu được lưu trữ an toàn và có thể truy xuất khi cần
+- Supplier: Quản lý thông tin nhà cung cấp và liên kết đơn hàng với nhà cung cấp tương ứng
+#### 2.4 Biểu đồ lớp (Class Diagram) cho các lớp phân tích
+![Diagram](https://www.planttext.com/api/plantuml/png/Z5DBJiCm4Dtd55wcYruW2rIrMS064Ea5XcH8HZZZo9-W274o5Xo9As0dJKH2Mkg5PRsPD-_DZFpz-RKp5hHrjOno2SQ8HwVp2Wm-w0ArU8z4E9dLnAMe8LLy2rmEQ0eM1PVG-SSlLBbdYSAe8o7FyazLhFR8iGAQ1LkGLFY2yIOHUwKa0Wy1rmIujvEY1P8cfBIAYkWZMZETeMufnz5x3SIUndqiLk5EveIbucXbq0GB_x7MVJnXemnPfRlHYe4MBzhek-fJNuYB7jrtTqKy3Juv3N6puFuPrKM5oM_ccaRIofxlApWuBW_Gp5U7l8n8ujUh55TtjDtUd1rQ8fn1SvutcK-4tp1goAqHRsIhAwKyhmQ6qcjCfTQIGeScsY4NuPVy0000__y30000)
 ### 3. Phân tích ca sử dụng Login
 #### 3.1 Xác định các lớp phân tích cho ca sử dụng
 ##### Mục đích
@@ -186,4 +237,135 @@
 ![Diagram](https://www.planttext.com/api/plantuml/png/V9An3i8W48RtFWMZ3hv01zD11nS7RTnFUXOI2WtG9etnoHny95_18fRQIcJZkml__z_nl3yoOq7RfX895M0CEM2jj2NNXBXpj9hBakWtt1KHc7SrJd015ZmeKQ86Y_x9nTBJ5WGllkajcKWVKRUSuk20QXoRF-QySlIzJQy-Rmi2sweMgaESfQjWpq2UECe9jYYZN2ZWqKBD6YNBd3KqxyiiLo17RMVi32Pe6sZ_fRgWfMpm-mxrOtQPXa1EPZgzrMezh3BzpD14MeAhb3IcxmXtLmpZIhqTD7wv6Sh2VPWN0000__y30000)
 
 ### 5. Phân tích ca sử dụng Maintain Employee Infomation
+#### 5.1 Xác định các lớp phân tích cho ca sử dụng
+##### Mục đích:
+- Duy trì và cập nhật thông tin cá nhân của nhân viên trong hệ thống
+- Employee:
+
+  **Thuộc tính**
+
+      - maNhanVien: Mã nhân viên
+      - tenNhanVien: Tên nhân viên
+      - loaiNhanVien: Loại nhân viên
+      - phuongThucThanhToan: Phương thức thanh toán
+      - ngayGiaNhap: Ngày gia nhập công ty
+      - diaChi: Địa chỉ của nhân viên
+      - soDienThoai: Số điện thoại của nhân viên
+      - email: Địa chỉ email của nhân viên
+  
+  **Phương thức**
+
+      - updatePersonalInfo(): Cập nhật thông tin cá nhân của nhân viên
+      - validate(): Xác minh tính hợp lệ của thông tin nhân viên
+
+- EmployeeService:
+
+  **Phương thức**
+
+      - maintainEmployee(employee: Employee): Xử lý việc duy trì và cập nhật thông tin nhân viên
+      - validateEmployeeData(employee: Employee): Kiểm tra tính hợp lệ của thông tin nhân viên trước khi lưu
+
+- EmployeeRepository:
+
+  **Phương thức**
+
+      - saveEmployee(employee: Employee): Lưu thông tin nhân viên vào cơ sở dữ liệu
+      - findEmployeeById(maNhanVien: String): Tìm kiếm thông tin nhân viên dựa trên mã nhân viên
+      - updateEmployee(employee: Employee): Cập nhật thông tin nhân viên trong cơ sở dữ liệu
+
+- Department
+
+  **Thuộc tính**
+
+      - maPhongBan: Mã phòng ban
+      - tenPhongBan: Tên phòng ban
+
+  **Phương thức**
+
+      - linkEmployee(employee: Employee): Liên kết nhân viên với phòng ban
+#### 5.2 Biểu đồ Sequence cho ca sử dụng Maintain Employee Infomation
+![Sequence](https://www.planttext.com/api/plantuml/png/b5DBJiCm4Dtx55vIARq02rH14MB30WBxKJnfHZZZABOhSZOM78ahC4x91wZI4ibMvlC-jiQVxnyR7w0DiROAYk1Q_UonLIhjUdsbR-l6kWxn2Tiz5QWlTGt4GTPGkQZXeG9-8UHC1-Gfi0veYfegEjxbLInooLMv0qdo3hexIWHDfWt1JKMPzcuhYBmIUAPHzEnA_VOni_Q8ZVCarZjnLnAReN3TtPkPkubaXbWVFUEGKGfi40k7IECR-U2Lbc_1Z-3tOCb0m8jLtvn8-jH49LNeQoV8VXmkDebqlFZXP_M7wEm3VbEQ9IjRR6H0QkGWG4lykc1Wrdj2E14jwGgwdy4PXBXqRGs178zJY4RxM1JeVHcjxNe-j3ur_-l6pv531fRUKWOIJJOgZCJ8HlNQawP3hzc5m-GS7vmZoWbHkfZePAcDxEbzVW400F__0m00)
+#### 5.3 Nhiệm vụ của các lớp phân tích
+- Employee: Lưu trữ và quản lý thông tin cá nhân của nhân viên. Đảm bảo rằng thông tin được nhập vào là hợp lệ và có thể được cập nhật khi cần.
+- EmployeeService: Xử lý các nghiệp vụ liên quan đến duy trì và cập nhật thông tin nhân viên, bao gồm xác minh dữ liệu và lưu thông tin nhân viên vào cơ sở dữ liệu.
+- EmployeeRepository: Tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin nhân viên. Đảm bảo rằng dữ liệu được lưu trữ an toàn và có thể truy xuất khi cần.
+- Department: Quản lý thông tin phòng ban và liên kết nhân viên với các phòng ban tương ứng.
+#### 5.4 Biểu đồ lớp (Class Diagram) mô tả các lớp phân tích
+![Diagram](https://www.planttext.com/api/plantuml/png/Z5DBQeH04DrxYbuwYxc0Yp0OGvXD63AIVQ4rTf6sMkpM824doo97oXNIJjJnXumWo7jLxzNFt--VWx5GsYfNNgB06F6K5qetYEBJ4-rpjYLn9d9uaS1lX3o1BV8ghZJGAb78IdCMoog97IrZ3HqVWKN16JJFr5eLawoKu57I138wSjgnT4OJ77CWzO_Ke2Xriluk4A7M2dklgcZX4vP6CwWZNtGRKcjAlIzlDeSpbZKbmpYSEbltzhIFtKSmPCpT-Z9wtdKAsscB8bwnq8QiBfk-3WCrRjTmRUSQUo5EUo9iZgb_MsRGZMrtInsFw0w7eTO82tT8ER9TdCv9kfs7i3YTAQw8t-ypdEzcltzO6rKWAeDcDNfKR23SHh64n1hnGLPkghle71Wo9pkIc4MqZHZlW9oslzKV0000__y30000)
 ### 6. Phân tích ca sử dụng Run Payroll
+#### 6.1 Xác định các lớp phân tích cho ca sử dụng
+##### Mục đích:
+- Tính toán và thực hiện thanh toán lương cho nhân viên trong hệ thống
+
+- Employee:
+
+  **Thuộc tính**
+
+      - maNhanVien: Mã nhân viên
+      - tenNhanVien: Tên nhân viên
+      - loaiNhanVien: Loại nhân viên
+      - phuongThucThanhToan: Phương thức thanh toán
+      - ngayGiaNhap: Ngày gia nhập công ty
+      - luongCoBan: Lương cơ bản của nhân viên
+
+  **Phương thức**
+
+      - getPaymentDetails(): Lấy chi tiết thanh toán của nhân viên
+
+  - TimeCard:
+ 
+    **Thuộc tính**
+
+        - ngayLamViec: Ngày làm việc
+        - soGioLam: Số giờ làm việc của nhân viên
+        - maDuAn: Mã dự án mà nhân viên đã làm
+
+    **Phương thức**
+
+        - getHoursWorked(): Lấy số giờ làm việc của nhân viên trong khoảng thời gian cụ thể
+ - SalesOrder:
+
+    **Thuộc tính**
+
+       - ngayDatHang: Ngày đặt hàng
+       - soTienDonHang: Tổng giá trị của đơn hàng
+       - hoaHong: Tỷ lệ hoa hồng mà nhân viên được nhận
+
+   **Phương thức**
+
+       - getCommission(): Lấy thông tin về hoa hồng của đơn hàng
+- Payroll:
+
+  **Thuộc tính**
+
+      - maNhanVien: Mã nhân viên
+      - tongLuong: Tổng lương của nhân viên
+
+  **Phương thức**
+
+      - calculatePayroll(employee: Employee, timecards: List<TimeCard>, salesOrders: List<SalesOrder>): Tính toán lương của nhân viên dựa trên thông tin cá nhân và các thẻ chấm công, đơn hàng
+      - executePayroll(employee: Employee): Thực hiện thanh toán lương cho nhân viên
+
+- PayrollService
+  **Phương thức**
+
+      - runPayroll(): Xử lý việc tính toán và thanh toán lương cho tất cả nhân viên
+      - validatePayrollData(employee: Employee): Kiểm tra tính hợp lệ của thông tin lương
+
+- PayrollRepository:
+
+  **Phương thức**
+
+      - savePayroll(payroll: Payroll): Lưu thông tin về lương đã được tính toán
+      - getPayrollByEmployee(maNhanVien: String): Truy xuất thông tin lương của một nhân viên cụ thể
+#### 6.2 Biểu đồ Sequence cho ca sử dụng Run Payroll
+![Sequence](https://www.planttext.com/api/plantuml/png/V9F1JiCm38RlUOeSLsbxWGbLsn0t18WXxbRgiWWdcP9qKf-D0u_4As1AqqARhfT8zl_RdnFtw-Dp5oBus1WIeABpSbyPRONe3hafvHEqtX4TqL-qGhcLlh5zR5M8IPRrT-PChaLynhCBcYksx7d3k2TAgS36Z6oJwtQlGxn9ub88e2XhnaHGfw6NaFpDKLwqmLlmrHGbnSEXJHLM1XvEO5yrsgAhbl4kyoLnkG1o1CBmw2lqKvGnSmqcwr_66ULBG7s43Gf8DGGHqvicYFLajFMiTd6z-BzH0ro63lrP2BILo6pG0UpxE57qO4EDdXk3rxmx7KRlOeQ_wkoLf09IELjhRo1gPsTjsVcxyjlXSdZHPMYKmX3gXgWLOiV4Ft_ADm000F__0m00)
+#### 6.3 Nhiệm vụ của các lớp phân tích
+- Employee: Lưu trữ và quản lý thông tin cá nhân và lương cơ bản của nhân viên. Cung cấp chi tiết thanh toán để tính toán lương.
+- TimeCard: Lưu trữ thông tin về số giờ làm việc của nhân viên. Cung cấp dữ liệu về số giờ làm việc để tính toán lương.
+- SalesOrder: Lưu trữ thông tin về các đơn hàng và hoa hồng của nhân viên. Cung cấp dữ liệu về hoa hồng để tính toán lương.
+- Payroll: Xử lý việc tính toán và thực hiện thanh toán lương cho nhân viên.
+- PayrollService: Xử lý các nghiệp vụ liên quan đến tính toán và thanh toán lương. Kiểm tra tính hợp lệ của dữ liệu lương và thực hiện thanh toán.
+- PayrollRepository: Tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin lương.
+#### 6.4 Biểu đồ lớp (Class Diagram) mô tả các lớp phân tích
+![Diagram](https://www.planttext.com/api/plantuml/png/Z5HBZjim3Dtx55fcW9aB64KmJL9C5a5RD4QxPcLEB8mi6g8Kr2XwiYvwf5wXSY9PTX9CnniRv2CV7p_--_lF8pkmphUwa1gOnOUsqzGZYf-569wziyeSH0iV6p1V5PgPsQ6vQTS4wgQZQpoPGzLuMGLtKn54_mOS2dE0_aaDL5sqal-kKUWXQ4sh13wW-mnzYyPjq87IlBWhnTnI_2gYeagrk0PR9qKZqmxQK9yyMvLnWkb9KR1UAD_uzvbtIzxoDx8lM0-a8ImpxK4ZVx8rsYkkyB45SvYfOgf2UpPahZmDmPQIBP2kgMqLio8pS9v1cJO8jwJrVoOMKxkGT-V7v1Aqz3fK6PCiCCw_73VXNhZGGHawoANOANRlKaUNzu97oScPcx3CjPwuy0TA_nfJm1z9rLVAzcYFIeuhQRr9ELB4oNu4hUei9RGSRfEiY3I6NRha-O8TiN9a-qJ5S1phxSxlCg5dtEUD7CohFZ4jyWZAE9MxCJgJXwr-kL3eB1X-HXjw2LOXBqwTZP7BIPik6lJmi1nrJiIKmZFoBN2Qv9l0UR9lWgUrBFEIlOQRvUJmpkYPhiWewdZdKynuwX7J3CSwGqnED6BaU5jSJ4SnAIsPIj5PaiX3M1eH5uzewk7_-Gy00F__0m00)
