@@ -15,4 +15,10 @@
 - Biểu đồ ngữ cảnh
   ![Diagram]()
 
-##### Mô tả 
+##### Mô tả hệ thống và Interce của hệ thống con ProjectManagementDatabase
+- Mô tả: Hệ thống con ProjectManagementDatabase là cơ sở dữ liệu cũ chứa tất cả thông tin vaeef các dự án và số hiệu cùng lúc
+- Interface:
+  - getProjectDetails(chảgeNumber): Lấy thông tin chi tiết về dự án dựa trên số hiệu công việc
+  - sendProjectDetails(): Gửi thông tin chi tiết về dự án đến hệ thống Payroll
+- Biểu đồ ngữ cảnh
+  ![Diagram]()
