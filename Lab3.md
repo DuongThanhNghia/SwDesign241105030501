@@ -13,7 +13,7 @@
   - printPayrollReport(): In báo cáo lương
   - confirmPrint(): Nhận xác nhận từ dịch vụ in rằng báo cáo đã được in thành công
 - Biểu đồ ngữ cảnh
-  ![Diagram]()
+  ![Diagram](https://www.planttext.com/api/plantuml/png/d5512i8m4BplA_QeO3zGGYbuwatq1R7TGg1DocOj5lLb7doINp0s2hRqv6cppEpCxEPvV-HUDCkfRQ1ijFUuOsDbwwomQnfYLAgCJPRX1H2xDxwdph6ird0322rnhKl2Ofmz4FScT7EoZZN5M3SeRkGJf_Xv5BPst6enpexIFuc-gahvqz4FNgWDwkuyBCJwsodoWmTPCHAbfp4cam3pOoL9Dhj2YfLXAYK6zCYZXSVUQ9WorJL99hl2ZE027XCk04lfSh9L-DWN0000__y30000)
 
 ##### Mô tả hệ thống và Interce của hệ thống con ProjectManagementDatabase
 - Mô tả: Hệ thống con ProjectManagementDatabase là cơ sở dữ liệu cũ chứa tất cả thông tin vaeef các dự án và số hiệu cùng lúc
@@ -21,4 +21,16 @@
   - getProjectDetails(chảgeNumber): Lấy thông tin chi tiết về dự án dựa trên số hiệu công việc
   - sendProjectDetails(): Gửi thông tin chi tiết về dự án đến hệ thống Payroll
 - Biểu đồ ngữ cảnh
-  ![Diagram]()
+  ![Diagram](https://www.planttext.com/api/plantuml/png/d5512i8m4BplA_QeO3zGGYbuwatq1R7TGg1DocOj5lLb7doINp0s2hRqv6cppEpCxEPvV-HUDCkfRQ1ijFUuOsDbwwomQnfYLAgCJPRX1H2xDxwdph6ird0322rnhKl2Ofmz4FScT7EoZZN5M3SeRkGJf_Xv5BPst6enpexIFuc-gahvqz4FNgWDwkuyBCJwsodoWmTPCHAbfp4cam3pOoL9Dhj2YfLXAYK6zCYZXSVUQ9WorJL99hl2ZE027XCk04lfSh9L-DWN0000__y30000)
+
+#### 2 Analysis class to design 
+| Analysis Class             | Design Element          |
+|----------------------------|-------------------------|
+| Employee                   | EmployeeDesignElement   |
+| TimeCard                   | TimeCardDesignElement   |
+| SalesOrder                 | SalesOrderDesignElement |
+| Payroll                    | PayrollDesignElement    |
+| PayrollService             | PayrollServiceDesignElement |
+| PayrollRepository          | PayrollRepositoryDesignElement |
+| BankService                | BankServiceDesignElement |
+
