@@ -34,3 +34,18 @@
 | PayrollRepository          | PayrollRepositoryDesignElement |
 | BankService                | BankServiceDesignElement |
 
+#### 3 Design element to owning package map
+| Design Element             | Owning Package                       |
+|----------------------------|--------------------------------------|
+| EmployeeDesignElement      | EmployeePackage                      |
+| TimeCardDesignElement      | TimeCardPackage                      |
+| SalesOrderDesignElement    | SalesOrderPackage                    |
+| PayrollDesignElement       | PayrollPackage                       |
+| PayrollServiceDesignElement| ServicePackage                       |
+| PayrollRepositoryDesignElement | RepositoryPackage               |
+| BankServiceDesignElement   | ServicePackage                       |
+
+#### 4 Architectural layer and their dependencies
+![Layer]()
+
+
