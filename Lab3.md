@@ -27,26 +27,26 @@
   ![Diagram](https://www.planttext.com/api/plantuml/png/d5512i8m4BplA_QeO3zGGYbuwatq1R7TGg1DocOj5lLb7doINp0s2hRqv6cppEpCxEPvV-HUDCkfRQ1ijFUuOsDbwwomQnfYLAgCJPRX1H2xDxwdph6ird0322rnhKl2Ofmz4FScT7EoZZN5M3SeRkGJf_Xv5BPst6enpexIFuc-gahvqz4FNgWDwkuyBCJwsodoWmTPCHAbfp4cam3pOoL9Dhj2YfLXAYK6zCYZXSVUQ9WorJL99hl2ZE027XCk04lfSh9L-DWN0000__y30000)
 
 #### 2 Analysis class to design 
-| Analysis Class             | Design Element          |
-|----------------------------|-------------------------|
-| Employee                   | EmployeeDesignElement   |
-| TimeCard                   | TimeCardDesignElement   |
-| SalesOrder                 | SalesOrderDesignElement |
-| Payroll                    | PayrollDesignElement    |
-| PayrollService             | PayrollServiceDesignElement |
-| PayrollRepository          | PayrollRepositoryDesignElement |
-| BankService                | BankServiceDesignElement |
+| Analysis Class             | Design Element                |Mô tả                                            |
+|----------------------------|-------------------------------|-------------------------------------------------|
+| Employee                   | EmployeeDesignElement         | Lớp này lưu trữ thông tin cá nhân               |
+| TimeCard                   | TimeCardDesignElement         | Lớp này lưu trữ thông tin về số giờ làm việc    |
+| SalesOrder                 | SalesOrderDesignElement       | Lớp này lưu trữ thông tin các đơn hàng nhân viên|
+| Payroll                    | PayrollDesignElement          | Lớp này xử lý việc tính toán và thực hiện thanh toán lương cho nhân viên|
+| PayrollService             | PayrollServiceDesignElement   | Lớp này xử lý các nghiệp vụ liên quan đến tính toán và thanh toán lương|
+| PayrollRepository          | PayrollRepositoryDesignElement| Lớp này tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin lương| 
+| BankService                | BankServiceDesignElement      | Lớp này tương tác với hệ thống ngân hàng để thực hiện chuyển tiền lương.|
 
 #### 3 Design element to owning package map
-| Design Element             | Owning Package                       |
-|----------------------------|--------------------------------------|
-| EmployeeDesignElement      | EmployeePackage                      |
-| TimeCardDesignElement      | TimeCardPackage                      |
-| SalesOrderDesignElement    | SalesOrderPackage                    |
-| PayrollDesignElement       | PayrollPackage                       |
-| PayrollServiceDesignElement| ServicePackage                       |
-| PayrollRepositoryDesignElement | RepositoryPackage               |
-| BankServiceDesignElement   | ServicePackage                       |
+| Design Element             | Owning Package                       |Mô tả                                            |
+|----------------------------|--------------------------------------|-------------------------------------------------|
+| EmployeeDesignElement      | EmployeePackage                      |Gói này chứa các phần tử liên quan đến quản lý thông tin nhân viên.|
+| TimeCardDesignElement      | TimeCardPackage                      |Gói này chứa các phần tử liên quan đến quản lý thông tin thẻ chấm công của nhân viên.|
+| SalesOrderDesignElement    | SalesOrderPackage                    |Gói này chứa các phần tử liên quan đến quản lý thông tin đơn hàng và hoa hồng của nhân viên.|
+| PayrollDesignElement       | PayrollPackage                       |Gói này chứa các phần tử liên quan đến xử lý tính toán và thanh toán lương cho nhân viên.|
+| PayrollServiceDesignElement| ServicePackage                       |Gói này chứa các phần tử liên quan đến các dịch vụ xử lý nghiệp vụ chính của hệ thống.|
+| PayrollRepositoryDesignElement | RepositoryPackage                |Gói này chứa các phần tử liên quan đến tương tác với cơ sở dữ liệu để lưu trữ và truy xuất thông tin lương.|
+| BankServiceDesignElement   | ServicePackage                       |Gói này chứa các phần tử liên quan đến các dịch vụ tương tác với hệ thống ngân hàng để thực hiện chuyển tiền lương.|
 
 #### 4 Architectural layer and their dependencies
 
